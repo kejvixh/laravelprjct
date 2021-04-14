@@ -55,12 +55,6 @@ return [
             'visibility' => 'public',
         ],
 
-        'posts' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public/posts'),
-            'url' => env('APP_URL').'/storage/posts',
-            'visibility' => 'public',
-        ],
 
         's3' => [
             'driver' => 's3',
@@ -86,7 +80,8 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public/'),
+        public_path('storage') => storage_path('app/public'),
+        
     ],
 
 ];
