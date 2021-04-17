@@ -83,7 +83,7 @@
 
     <script>
         function handleDelete(id){
-            var form = document.getElementById('deletetagForm')
+            var form = document.getElementById('deleteTagForm')
             form.action = '/tags/' + id
 
             console.log('deleting.', id)

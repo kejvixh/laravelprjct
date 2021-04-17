@@ -62,6 +62,11 @@
                                         {{ __('Logout') }}
                                     </a>
 
+
+                                    <a class="dropdown-item" href="{{ route('users.edit-profile') }}">
+                                        My profile
+                                    </a>
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -92,20 +97,32 @@
             <div class="row">
               <div class="col-md-4">
               <ul class="list-group">
-                <li class="list-group-item">
-                    <a href="{{ route('posts.index') }}">Posts</a>
 
-                </li>
+                    @if (auth()->user()->isAdmin())
 
-                <li class="list-group-item">
-                    <a href="{{ route('tags.index') }}">Tags</a>
+                    <li class="list-group-item">
+                        <a href="{{ route ('users.index')}}">
+                            Users
+                        </a>
+                    </li>
+                    
+                    @endif
 
-                </li>
 
-                <li class="list-group-item">
-                    <a href="{{ route('categories.index') }}">Category</a>
+                    <li class="list-group-item">
+                        <a href="{{ route('posts.index') }}">Posts</a>
 
-                </li>
+                    </li>
+
+                    <li class="list-group-item">
+                        <a href="{{ route('tags.index') }}">Tags</a>
+
+                    </li>
+
+                    <li class="list-group-item">
+                        <a href="{{ route('categories.index') }}">Category</a>
+
+                    </li>
               </ul>
 
               <ul class="list-group mt-5" >

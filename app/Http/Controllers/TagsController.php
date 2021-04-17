@@ -66,7 +66,7 @@ class TagsController extends Controller
      */
     public function edit(Tag $tag)
     {
-        return view('tags.create')->with('tags', $tag);
+        return view('tags.create')->with('tag', $tag);
     }
 
     /**
@@ -97,6 +97,14 @@ class TagsController extends Controller
      */
     public function destroy(Tag $tag)
     {
+
+        if($tag->posts->count() > 0){
+            
+            session()->flash('error','tag cannot be deleted because it is associated to some posts');
+
+            return redirect()->back();
+        }
+
         $tag->delete();
         session()->flash('success','Tag Deleted Successfully');
 
